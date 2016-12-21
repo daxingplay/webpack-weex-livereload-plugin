@@ -42,6 +42,7 @@ LiveReloadPlugin.prototype.start = function start(watching, cb) {
     //   }
     //   cb();
     // };
+    console.info((new Date()) + `WebSocket  is listening on port ${port}`);
     this.server.on('connection', function connection(ws) {
       ws.on('message', function incoming(message) {
         console.info('received: %s', message);
@@ -49,6 +50,7 @@ LiveReloadPlugin.prototype.start = function start(watching, cb) {
       ws.send('ws server ok');
       self.connection = ws;
     });
+    cb();
   }
 };
 
@@ -64,7 +66,9 @@ LiveReloadPlugin.prototype.done = function done(stats) {
     this.lastHash = hash;
     this.lastChildHashes = childHashes;
     setTimeout(function onTimeout() {
-      this.connection.send(this.message);
+      if (this.connection) {
+        this.connection.send(this.message);
+      }
     }.bind(this));
   }
 };
