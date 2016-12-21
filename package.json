@@ -1,0 +1,27 @@
+{
+  "name": "webpack-weex-livereload-plugin",
+  "version": "1.0.0",
+  "description": "weex live reload plugin for webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daxingplay/webpack-weex-livereload-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "livereload",
+    "weex"
+  ],
+  "author": "daxingplay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daxingplay/webpack-weex-livereload-plugin/issues"
+  },
+  "homepage": "https://github.com/daxingplay/webpack-weex-livereload-plugin#readme",
+  "dependencies": {
+    "ws": "^1.1.1"
+  }
+}
