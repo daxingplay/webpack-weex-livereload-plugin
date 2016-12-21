@@ -8,7 +8,7 @@ function LiveReloadPlugin(options) {
   this.ignore = this.options.ignore || null;
   this.lastHash = null;
   this.lastChildHashes = [];
-  this.hostname = this.options.hostname || 'localhost';
+  this.host = this.options.host || '0.0.0.0';
   this.server = null;
   this.connection = null;
 }
@@ -33,7 +33,8 @@ LiveReloadPlugin.prototype.start = function start(watching, cb) {
   } else {
     var self = this;
     this.server = servers[port] = wsServer({
-      port: port
+      port: port,
+      host: this.host,
     });
     // this.server.errorListener = function serverError(err) {
     //   console.error('Live Reload disabled: ' + err.message);
@@ -42,7 +43,7 @@ LiveReloadPlugin.prototype.start = function start(watching, cb) {
     //   }
     //   cb();
     // };
-    console.info((new Date()) + `WebSocket  is listening on port ${port}`);
+    console.info((new Date()) + `WebSocket  is listening on port ${this.host}:${port}`);
     this.server.on('connection', function connection(ws) {
       ws.on('message', function incoming(message) {
         console.info('received: %s', message);
