@@ -14,13 +14,13 @@ function LiveReloadPlugin(options) {
 }
 
 function arraysEqual(a1, a2) {
-  return a1.length == a2.length && a1.every(function (v, i) {
+  return a1.length == a2.length && a1.every(function(v, i) {
     return v === a2[i];
   });
 }
 
 Object.defineProperty(LiveReloadPlugin.prototype, 'isRunning', {
-  get: function () {
+  get: function() {
     return !!this.server;
   }
 });
@@ -59,7 +59,7 @@ LiveReloadPlugin.prototype.done = function done(stats) {
   var hash = stats.compilation.hash;
   var childHashes = (stats.compilation.children || []).map(child => child.hash);
   var files = Object.keys(stats.compilation.assets);
-  var include = files.filter(function (file) {
+  var include = files.filter(function(file) {
     return !file.match(this.ignore);
   }, this);
 
@@ -67,9 +67,7 @@ LiveReloadPlugin.prototype.done = function done(stats) {
     this.lastHash = hash;
     this.lastChildHashes = childHashes;
     setTimeout(function onTimeout() {
-      if (this.connection) {
-        this.connection.send(this.message);
-      }
+      this.connection.send(this.message, function(error) {});
     }.bind(this));
   }
 };
