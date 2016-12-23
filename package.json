@@ -1,6 +1,6 @@
 {
   "name": "webpack-weex-livereload-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "weex live reload plugin for webpack",
   "main": "index.js",
   "scripts": {

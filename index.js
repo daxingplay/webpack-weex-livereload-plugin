@@ -67,7 +67,9 @@ LiveReloadPlugin.prototype.done = function done(stats) {
     this.lastHash = hash;
     this.lastChildHashes = childHashes;
     setTimeout(function onTimeout() {
-      this.connection.send(this.message, function(error) {});
+      if (this.connection) {
+        this.connection.send(this.message, function(error) {});
+      }
     }.bind(this));
   }
 };
