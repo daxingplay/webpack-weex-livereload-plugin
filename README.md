@@ -26,7 +26,7 @@ Add the plugin to your webpack config
 ```js
 // webpack.config.js
 
-var WeexLiveReloadPlugin = require('webpack-livereload-plugin');
+var WeexLiveReloadPlugin = require('webpack-weex-livereload-plugin');
 
 module.exports = {
   plugins: [
